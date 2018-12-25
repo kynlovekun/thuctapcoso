@@ -38,6 +38,12 @@ int DateCheck(int d, int m, int y){
 		a = 0;
 	return a;
 }
+int SttNgay(int Day, int Month, int Year){
+	int dem = Day;
+	for(int i = 1; i <= Month - 1; i++)
+		dem = dem + NgayMax(i, Year);
+	return dem;
+}
 int main(){
 	string st;
 	char t[4];
