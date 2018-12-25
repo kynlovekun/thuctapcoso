@@ -29,14 +29,19 @@ int NgayMax(int month, int year){
 	return ngaymax;
 }
 int DateCheck(int d, int m, int y){
-	int a = 1;
-	if(!(y > 0 && m > 0))
-		a = 0;
-	if(!(y >=1 && m <= 12))
-		a = 0;
-	if(!(d >= 1 && d <= NgayMax(d, y)))
-		a = 0;
-	return a;
+	if(d < 1 || d > 31 || m < 1 || m > 12 || y < 1)
+		return 0;
+	else
+		if(KtNhuan(y)){
+			if(d >= 1 && d <= 29)
+				return 1;
+			return 0;
+		}
+		else{
+			if(d >= 1 && d <= 28)
+				return 1;
+			return 0;
+		}
 }
 int SttNgay(int Day, int Month, int Year){
 	int dem = Day;
