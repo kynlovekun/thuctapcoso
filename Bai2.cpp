@@ -10,7 +10,7 @@ typedef struct ngaythang{
 int main(){
 	string st;
 	char t[4];
-	cout<<"nhap du lieu"; getline(cin, st);
+	cout<<"Nhap vao ngay thang nam: "; getline(cin, st);
 	ngaythang x;
 	
 	t[0] = st[0];
