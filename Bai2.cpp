@@ -16,17 +16,17 @@ int NgayMax(int month, int year){
 	int ngaymax;
 	switch(month){
 		case 1: case 3: case 5: case 7: case 8: case 10: case 12:
-			daymax = 31;
+			ngaymax = 31;
 			break;
 		case 4: case 6: case 9: case 11:
-			daymax = 30;
+			ngaymax = 30;
 		case 2:
 			if(KtNhuan(year))
-				daymax = 29;
-				daymax = 28;
+				ngaymax = 29;
+				ngaymax = 28;
 		break;
 	}
-	return daymax;
+	return ngaymax;
 }
 int DateCheck(int d, int m, int y){
 	int a = 1;
@@ -68,6 +68,12 @@ int main(){
 		cout<<"Nam "<<x.nam<<" la nam nhuan"<<endl;
 	else
 		cout<<"Nam "<<x.nam<<" khong la nam nhuan"<<endl;
+	if(DateCheck(x.ngay, x.thang, x.nam)){
+		int stt = SttNgay(x.ngay, x.thang, x.nam);
+		cout<<"Ngay thu: "<<stt<<endl;
+	}
+	else
+		cout<<"Nhap ngay sai!"<<endl;
 	
 	cout<<x.ngay<<"/"<<x.thang<<"/"<<x.nam;
 }
