@@ -66,7 +66,21 @@ void NgayTuStt(ngaythang &a, int &stt){
 		}
 	cout<<"Ngay sau khi chuyen la: "<<a.ngay<<"/"<<a.thang<<"/"<<a.nam<<endl;
 }
-
+void CongNgayThang(ngaythang &n, int x){
+	cout<<"Nhap x: ";
+	cin>>x;
+	int kq = x + SttNgay(n.ngay, n.thang, n.nam);
+	int nam = n.nam;
+	if (kq <= 365)
+		return NgayTuStt(nam, kq);
+	else
+		if(KtNhuan(nam)){
+			if(kq == 366)
+				return NgayTuStt(kq, nam);
+			return NgayTuStt(kq - 366, nam + 1);
+		}
+		else return NgayTuStt(kq - 365, nam + 1);
+}
 int main(){
 	string st;
 	char t[4];
