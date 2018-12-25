@@ -7,6 +7,11 @@ typedef struct ngaythang{
 	int thang;
 	int nam;
 }ngaythang;
+int KtNhuan(int year){
+	if((year % 4 == 0 && year % 100 != 0) || year % 400 == 0)
+		return 1;
+		return 0;
+}
 int main(){
 	string st;
 	char t[4];
@@ -26,6 +31,11 @@ int main(){
 	t[2] = st[8];
 	t[3] = st[9];
 	x.nam = atoi(t);
+	
+	if(KtNhuan(x.nam))
+		cout<<"Nam "<<x.nam<<" la nam nhuan"<<endl;
+	else
+		cout<<"Nam "<<x.nam<<" khong la nam nhuan"<<endl;
 	
 	cout<<x.ngay<<"/"<<x.thang<<"/"<<x.nam;
 }
