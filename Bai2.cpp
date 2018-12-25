@@ -12,6 +12,32 @@ int KtNhuan(int year){
 		return 1;
 		return 0;
 }
+int NgayMax(int month, int year){
+	int ngaymax;
+	switch(month){
+		case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+			daymax = 31;
+			break;
+		case 4: case 6: case 9: case 11:
+			daymax = 30;
+		case 2:
+			if(KtNhuan(year))
+				daymax = 29;
+				daymax = 28;
+		break;
+	}
+	return daymax;
+}
+int DateCheck(int d, int m, int y){
+	int a = 1;
+	if(!(y > 0 && m > 0))
+		a = 0;
+	if(!(y >=1 && m <= 12))
+		a = 0;
+	if(!(d >= 1 && d <= NgayMax(d, y)))
+		a = 0;
+	return a;
+}
 int main(){
 	string st;
 	char t[4];
