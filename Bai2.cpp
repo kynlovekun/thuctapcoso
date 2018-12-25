@@ -49,6 +49,24 @@ int SttNgay(int Day, int Month, int Year){
 		dem = dem + NgayMax(i, Year);
 	return dem;
 }
+void NgayTuStt(ngaythang &a, int &stt){
+	for(int i = stt; stt > 0; stt -= NgayMax(a.thang, a.nam))
+		if(stt > NgayMax(a.thang, a.nam))
+			a.thang++;
+		else{
+			if(stt == NgayMax(a.thang, a.nam)){
+				a.thang++;
+				a.ngay = 1;
+				stt = 0;
+			}
+			else{
+				a.ngay = stt;
+				stt = 0;
+			}
+		}
+	cout<<"Ngay sau khi chuyen la: "<<a.ngay<<"/"<<a.thang<<"/"<<a.nam<<endl;
+}
+
 int main(){
 	string st;
 	char t[4];
