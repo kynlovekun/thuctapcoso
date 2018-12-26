@@ -49,7 +49,7 @@ int SttNgay(int Day, int Month, int Year){
 		dem = dem + NgayMax(i, Year);
 	return dem;
 }
-void NgayTuStt(ngaythang &a, int &stt){
+ngaythang NgayTuStt(ngaythang &a, int &stt){
 	for(int i = stt; stt > 0; stt -= NgayMax(a.thang, a.nam))
 		if(stt > NgayMax(a.thang, a.nam))
 			a.thang++;
@@ -66,7 +66,7 @@ void NgayTuStt(ngaythang &a, int &stt){
 		}
 	cout<<"Ngay sau khi chuyen la: "<<a.ngay<<"/"<<a.thang<<"/"<<a.nam<<endl;
 }
-void CongNgayThang(ngaythang &n, int x){
+ngaythang CongNgayThang(ngaythang n, int x){
 	cout<<"Nhap x: ";
 	cin>>x;
 	int kq = x + SttNgay(n.ngay, n.thang, n.nam);
@@ -76,10 +76,10 @@ void CongNgayThang(ngaythang &n, int x){
 	else
 		if(KtNhuan(nam)){
 			if(kq == 366)
-				return NgayTuStt(kq, nam);
-			return NgayTuStt(kq - 366, nam + 1);
+				return NgayTuStt(nam, kq);
+			return NgayTuStt(nam + 1, kq - 366);
 		}
-		else return NgayTuStt(kq - 365, nam + 1);
+		else return NgayTuStt(nam + 1, kq - 365);
 }
 int main(){
 	string st;
