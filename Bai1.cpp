@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
+#include <string.h>
 using namespace std;
 	FILE* f=fopen("intput.dat", "rb");
 typedef struct Contact{
@@ -18,7 +19,23 @@ void ThemMoi(Contact c);
 void Xuat(Contact c);
 void LietKe();
 int main(){
-	
+	cout<<"Danh Ba"<<"\n";
+	DocDBTuFile();
+	LietKeDB();
+	Contact c1;
+	strcpy(c1.ten, "Thanh Thanh");
+	strcpy(c1.sdt, "01206162312");
+	strcpy(c1.email, "kynlovekun1@gmail.com");
+	strcpy(c1.diachi, "98 Doan Tran Nghiep");
+	Contact c2;
+	strcpy(c2.ten,"Nhu Kha");
+	strcpy(c2.sdt,"09684236587");
+	strcpy(c2.email,"vongocnhukha@gmail.com");
+	strcpy(c2.diachi,"34 Mai An Tiem");
+	ThemMoi(c1);
+	ThemMoi(c2);
+	cout<<"Danh Ba sau khi nhap: \n";
+	LietKeDB();
 }
 void DocDBTuFile(){
 	db.clear();
@@ -51,7 +68,6 @@ void ThemMoi(Contact c){
 }
 void XuatDB(Contact c){
 	cout<<c.ten;
-	cout<<c.gioitinh;
 	cout<<c.sdt;
 	cout<<c.email;
 	cout<<c.diachi
@@ -61,6 +77,7 @@ void LietkeDB(){
 	for(int i = 0; i < size; i++)
 		XuatDB(db[i]);
 }
+//------
 void CapNhat(Contact c){
 //tim contact m co sdt c.sdt
 //cap nhat c vao m
@@ -71,6 +88,5 @@ void XoaContact{
 //xoa m
 //ghi danh ba vao file
 }
-int main(){
-	
-}
+
+
