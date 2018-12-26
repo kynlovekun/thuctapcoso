@@ -38,15 +38,16 @@ void GhiDBVaoFile(){
 	int size = db.size();
 	FILE *f;
 	f = fopen(FileName, "wb");
-	
+	Contact c;
+	for(int i = 0; i < size; i++){
+		c = db[i];
+		fwrite(&c, sizeof(Contact), 1, f);
+	}
+	fclose(f);
 }
 void ThemMoi(Contact c){
-	db.push_back(c);	
-}
-//ghi danh ba vao file
-void GhiDB(){
-	for(int i = 0; i < db.size(); i++)
-		fwrite(&db[i], sizeof(db))
+	db.push_back(c);
+	GhiDBVaoFile();	
 }
 void XuatDB(Contact c){
 	cout<<c.ten;
@@ -55,10 +56,10 @@ void XuatDB(Contact c){
 	cout<<c.email;
 	cout<<c.diachi
 }
-//in cac phan tu cua danh ba ra man hinh
 void LietkeDB(){
-	DocFile();
-	for(int i = 0; i < sizeof)
+	int size = db.size();
+	for(int i = 0; i < size; i++)
+		XuatDB(db[i]);
 }
 void CapNhat(Contact c){
 //tim contact m co sdt c.sdt
