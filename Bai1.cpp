@@ -25,8 +25,20 @@ void DocDBTuFile(){
 	FILE *f;
 	f = fopen(FileName, "rb");
 	if(f != NULL){
-		while()
+		while(!fsof(f)){
+			Contact c;
+			fread(&c, sizeof(Contact), 1, f);
+			db.push_back(c);
+		}
+		fclose(f);
+		db.pop_back();
 	}
+}
+void GhiDBVaoFile(){
+	int size = db.size();
+	FILE *f;
+	f = fopen(FileName, "wb");
+	
 }
 void ThemMoi(Contact c){
 	db.push_back(c);	
