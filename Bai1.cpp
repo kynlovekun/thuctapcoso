@@ -21,7 +21,7 @@ void LietKe();
 int main(){
 	cout<<"Danh Ba"<<"\n";
 	DocDBTuFile();
-	LietKeDB();
+	LietkeDB();
 	Contact c1;
 	strcpy(c1.ten, "Thanh Thanh");
 	strcpy(c1.sdt, "01206162312");
@@ -35,7 +35,11 @@ int main(){
 	ThemMoi(c1);
 	ThemMoi(c2);
 	cout<<"Danh Ba sau khi nhap: \n";
-	LietKeDB();
+	LietkeDB();
+	char tenx[30];
+	cout<<"Nhap ten can xoa: "<<endl;
+	cin>>tenx;
+	XoaContact();
 }
 void DocDBTuFile(){
 	db.clear();
@@ -77,16 +81,24 @@ void LietkeDB(){
 	for(int i = 0; i < size; i++)
 		XuatDB(db[i]);
 }
-//------
-void CapNhat(Contact c){
-//tim contact m co sdt c.sdt
-//cap nhat c vao m
-//ghi danh ba vao file
-}
-void XoaContact{
+void XoaContact(){
 //tim contact m co sdt trong danh ba
 //xoa m
 //ghi danh ba vao file
+	int size = db.size();
+	char m[30];
+	for(int i = 0; i < size; i++){
+		c = db[i];
+		if(m == c.ten){
+			m = c.ten;
+			delete m;
+		}
+		else
+			cout<<"not found"<<endl;
+	GhiDBVaoFile();
 }
-
+//void CapNhat(Contact c){
+//tim contact m co sdt c.sdt
+//cap nhat c vao m
+//ghi danh ba vao file}
 
