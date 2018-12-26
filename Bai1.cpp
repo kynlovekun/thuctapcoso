@@ -17,7 +17,8 @@ void DocDBTuFile();
 void GhiDBTuFile();
 void ThemMoi(Contact c);
 void Xuat(Contact c);
-void LietKe();
+void LietkeDB();
+void XoaContact();
 int main(){
 	cout<<"Danh Ba"<<"\n";
 	DocDBTuFile();
@@ -46,7 +47,7 @@ void DocDBTuFile(){
 	FILE *f;
 	f = fopen(FileName, "rb");
 	if(f != NULL){
-		while(!fsof(f)){
+		while(!feof(f)){
 			Contact c;
 			fread(&c, sizeof(Contact), 1, f);
 			db.push_back(c);
@@ -74,14 +75,14 @@ void XuatDB(Contact c){
 	cout<<c.ten;
 	cout<<c.sdt;
 	cout<<c.email;
-	cout<<c.diachi
+	cout<<c.diachi;
 }
 void LietkeDB(){
 	int size = db.size();
 	for(int i = 0; i < size; i++)
 		XuatDB(db[i]);
 }
-void XoaContact(){
+void XoaContact(Contact c){
 //tim contact m co sdt trong danh ba
 //xoa m
 //ghi danh ba vao file
