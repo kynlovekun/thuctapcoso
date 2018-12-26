@@ -4,13 +4,13 @@
 #include <string.h>
 using namespace std;
 	FILE* f=fopen("intput.dat", "rb");
-typedef struct Contact{
+typedef struct {
 	char ten[30];
 	bool gioitinh;
 	char sdt[11];
 	char email[30];
 	char diachi[50];
-};
+}Contact;
 char *FileName = "input.dat";
 vector <Contact> db;
 void DocDBTuFile();
@@ -91,12 +91,12 @@ void XoaContact(Contact c){
 	for(int i = 0; i < size; i++){
 		c = db[i];
 		if(m == c.ten){
-			m = c.ten;
-			delete m;
+			delete c.ten;
 		}
 		else
 			cout<<"not found"<<endl;
 	GhiDBVaoFile();
+}
 }
 //void CapNhat(Contact c){
 //tim contact m co sdt c.sdt
