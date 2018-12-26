@@ -2,6 +2,7 @@
 #include <vector>
 #include <fstream>
 using namespace std;
+	FILE* f=fopen("intput.dat", "rb");
 typedef struct Contact{
 	char ten[30];
 	bool gioitinh;
@@ -9,28 +10,43 @@ typedef struct Contact{
 	char email[30];
 	char diachi[50];
 };
+char *FileName = "input.dat";
 vector <Contact> db;
-fstream f("input.dat");
-// Thêm moi contact vào danh ba
-void ThemMoi(Contact c){
-//them vao danh ba
-	cout<<"Nhap Ten: ";
-	cin.getline(c.ten, 30);
-	cout<<"Gioi Tinh: ";
-	cin.getline(gt);
-		if(gt == "N" || gt == "n")
-			return true;
-		return false;
-	cout<<"So dien thoai: ";
-	cin.getline(c.sdt, 11);
-	cout<<"Email: ";
-	cin.getline(c.email, 30);
-	cout<<"Dia chi: ";
-	cin.getline(c.diachi, 50);
-//ghi danh ba vao file	
+void DocDBTuFile();
+void GhiDBTuFile();
+void ThemMoi(Contact c);
+void Xuat(Contact c);
+void LietKe();
+int main(){
+	
 }
-void LietkeDB(){
+void DocDBTuFile(){
+	db.clear();
+	FILE *f;
+	f = fopen(FileName, "rb");
+	if(f != NULL){
+		while()
+	}
+}
+void ThemMoi(Contact c){
+	db.push_back(c);	
+}
+//ghi danh ba vao file
+void GhiDB(){
+	for(int i = 0; i < db.size(); i++)
+		fwrite(&db[i], sizeof(db))
+}
+void XuatDB(Contact c){
+	cout<<c.ten;
+	cout<<c.gioitinh;
+	cout<<c.sdt;
+	cout<<c.email;
+	cout<<c.diachi
+}
 //in cac phan tu cua danh ba ra man hinh
+void LietkeDB(){
+	DocFile();
+	for(int i = 0; i < sizeof)
 }
 void CapNhat(Contact c){
 //tim contact m co sdt c.sdt
