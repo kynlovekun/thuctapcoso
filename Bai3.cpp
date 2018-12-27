@@ -30,14 +30,23 @@ void LayDe(){
 	ifstream f("DE1.txt"); 						// doc file text
 	int sl;
 	De de;
-	string s; 									// khai bao bien tam
+	int diem = 0;
+	string s, tl; 									// khai bao bien tam
 	getline(f,s); sl = atoi(s.c_str());			// doi sl tu string sang int
 	for(int i = 0; i < sl; i++){ 				
-		getline(f,s); de.cau = s;
-		getline(f,s); de.A = s; 				//gan gia tri vao bien tam s
-		getline(f,s); de.B = s; 
-		getline(f,s); de.C = s; 
+		getline(f,s); de.cau = s; cout<<s<<endl;
+		getline(f,s); de.A = s; cout<<s<<endl;				//gan gia tri vao bien tam s va xuat ra man hinh
+		getline(f,s); de.B = s; cout<<s<<endl;
+		getline(f,s); de.C = s; cout<<s<<endl;
 		getline(f,s); de.DA = s;
+		cout<<"Nhap cau tra loi: ";
+		cin>>tl;
+		if(KiemTra(de.DA, tl)){
+			cout<<"That's right!"<<endl;
+			diem++;
+		}
+		else
+			cout<<"Oh Nooooooooo!"<<endl;
 		dsda.push_back(de);
 	}
 }
@@ -51,13 +60,15 @@ void Xuat(De bd, int &diem){
 	cin>>dapan;
 }
 void DocDe(){
-	De bd;
 	Player n;
 	n.diem = 0;
-	for(int i = 0; i < bd.siz)
+	for(int i = 0; i < dsda.size(); i++)
+		Xuat(dsda[i], n.diem);
+	dsplayer.push_back(n);
 }
 int main(){
 	De bode;
+	int diemso;
 	LayDe();
-	Xuat(bode);
+	Xuat(bode, diemso);
 }
