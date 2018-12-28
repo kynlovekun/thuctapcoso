@@ -10,19 +10,15 @@ struct De{										//khai bao cau truc De
 	string A, B, C;
 	string DA;
 };
-struct Player{ 									//khai bao cau truc nguoi choi
-	string ten;
-	int diem;
-};
-vector<De> dsda; 								//tao vector danh sach dap an
-vector<Player> dsplayer; 						// tao vector danh sach nguoi choi
+vector<De> dsda; 							
 bool KiemTra(string a, string b){
 	if(a.compare(b) == 0)
 		return true;
 	return false;
 }
-void LD(string name, int score){
-	ofstream f("Luudiem.txt"); 					// luu diem
+void LD(string name, int score){				//luu diem
+	fstream f;
+	f.open("Luudiem.txt", ios::out); 					
 	f<<name<<endl;
 	f<<"diem: "<<score;
 }
@@ -31,8 +27,10 @@ void LayDe(){
 	int sl;
 	De de;
 	int diem = 0;
-	string s, tl; 									// khai bao bien tam
+	string s, tl, urname; 									// khai bao bien tam
 	getline(f,s); sl = atoi(s.c_str());			// doi sl tu string sang int
+	cout<<"Kimi no Nawa? :";
+	getline(cin, urname);
 	for(int i = 0; i < sl; i++){ 				
 		getline(f,s); de.cau = s; cout<<s<<endl;
 		getline(f,s); de.A = s; cout<<s<<endl;				//gan gia tri vao bien tam s va xuat ra man hinh
@@ -40,7 +38,7 @@ void LayDe(){
 		getline(f,s); de.C = s; cout<<s<<endl;
 		getline(f,s); de.DA = s;
 		cout<<"Nhap cau tra loi: ";
-		cin>>tl;
+		getline(cin,tl);
 		if(KiemTra(de.DA, tl)){
 			cout<<"That's right!"<<endl;
 			diem++;
@@ -49,26 +47,9 @@ void LayDe(){
 			cout<<"Oh Nooooooooo!"<<endl;
 		dsda.push_back(de);
 	}
-}
-void Xuat(De bd, int &diem){
-	string dapan;
-	cout<<bd.cau<<endl;
-	cout<<bd.A<<endl;
-	cout<<bd.B<<endl;
-	cout<<bd.C<<endl;
-	cout<<"Nhap cau tra loi: ";
-	cin>>dapan;
-}
-void DocDe(){
-	Player n;
-	n.diem = 0;
-	for(int i = 0; i < dsda.size(); i++)
-		Xuat(dsda[i], n.diem);
-	dsplayer.push_back(n);
+	cout<<"Your points: "<<diem<<endl;
+	LD(urname, diem);
 }
 int main(){
-	De bode;
-	int diemso;
 	LayDe();
-	Xuat(bode, diemso);
 }
