@@ -23,7 +23,7 @@ void TaoMoi(int a[10][10], int &n1){					//tao moi mot do thi
 	f<<n1<<endl;
 	for(int i = 0; i < n1; i++){
 		for(int j = 0; j < n1; j++){
-			cout<<"Trong so"<<i<<"den"<<j<<": ";
+			cout<<"Trong so "<<i<<" den "<<j<<": ";
 			cin>>a[i][j];
 			f<<a[i][j]<<" ";								//ghi a[i][j] vao file dothi.txt
 		}
@@ -31,6 +31,7 @@ void TaoMoi(int a[10][10], int &n1){					//tao moi mot do thi
 		f.close();
 	}
 }
+
 int main(){
 	int n, n1;
 	int a[10][10];
