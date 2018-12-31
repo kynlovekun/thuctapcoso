@@ -16,7 +16,7 @@ void GhiDBVaoFile();					// ham ghi danh ba vao file
 void ThemMoi(Contact c);				// ham them moi 1 lien he vao danh ba
 void LietkeDB();						// ham de xuat danh ba ra man hinh
 void XoaContact(char m[]);						// ham xoa lien he trong danh ba
-void TimKiem(char tten[], char tsdt[]);			// ham tim kiem lien he trong danh ba
+void TimKiem(char tten[]);			// ham tim kiem lien he trong danh ba
 int main(){
 	DocDBTuFile();
 	Contact c1;
@@ -35,9 +35,12 @@ int main(){
 	ThemMoi(c2);
 	cout<<"Danh Ba sau khi nhap: \n";
 	LietkeDB();
+	cout<<"-------------------------------------------"<<endl;
 	cout<<"Danh ba sau khi xoa contact x: "<<endl;
 	XoaContact("Thanh Thanh");
 	LietkeDB();
+	cout<<"Lien he can tim la: "<<endl;
+	TimKiem("Nhu Kha");
 }
 void DocDBTuFile(){
 	db.clear();									// bo di tat ca cac phan tu cua vector
@@ -83,9 +86,9 @@ void XoaContact(char m[]){
 			db.erase(db.begin()+i);
 	}
 }
-void TimKiem(char tten[], char tsdt[]){
+void TimKiem(char tten[]){
 	for(int i = 0; i < db.size(); i++){
-		if(strcmp(db[i].ten, tten) == 0 || strcmp(db[i].sdt, tsdt) == 0){
+		if(strcmp(db[i].ten, tten) == 0){
 			cout<<"Ten: "<<db[i].ten<<endl;
 			cout<<"So dien thoai: "<<db[i].sdt<<endl;
 			cout<<"Email: "<<db[i].email<<endl;
