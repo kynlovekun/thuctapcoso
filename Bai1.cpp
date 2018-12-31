@@ -3,49 +3,46 @@
 #include <fstream>
 #include <string.h>
 using namespace std;
-	FILE* f=fopen("intput.dat", "rb");
-typedef struct {
+typedef struct {						// khai bao struct Contact
 	char ten[30];
 	bool gioitinh;
 	char sdt[11];
 	char email[30];
 	char diachi[50];
 }Contact;
-char *FileName = "input.dat";
-vector <Contact> db;
-void DocDBTuFile();
-void GhiDBTuFile();
-void ThemMoi(Contact c);
-void Xuat(Contact c);
-void LietkeDB();
-void XoaContact();
+vector <Contact> db;					// tao vector danh ba(db)
+void DocDBTuFile();						// ham doc danh ba tu file
+void GhiDBVaoFile();					// ham ghi danh ba vao file
+void ThemMoi(Contact c);				// ham them moi 1 lien he vao danh ba
+void LietkeDB();						// ham de xuat danh ba ra man hinh
+void XoaContact(char m[]);						// ham xoa lien he trong danh ba
+void TimKiem(char tten[], char tsdt[]);			// ham tim kiem lien he trong danh ba
 int main(){
-	cout<<"Danh Ba"<<"\n";
 	DocDBTuFile();
-	LietkeDB();
 	Contact c1;
 	strcpy(c1.ten, "Thanh Thanh");
 	strcpy(c1.sdt, "01206162312");
 	strcpy(c1.email, "kynlovekun1@gmail.com");
 	strcpy(c1.diachi, "98 Doan Tran Nghiep");
+	c1.gioitinh = 1;
+	ThemMoi(c1);
 	Contact c2;
 	strcpy(c2.ten,"Nhu Kha");
 	strcpy(c2.sdt,"09684236587");
 	strcpy(c2.email,"vongocnhukha@gmail.com");
 	strcpy(c2.diachi,"34 Mai An Tiem");
-	ThemMoi(c1);
+	c2.gioitinh = 2;
 	ThemMoi(c2);
 	cout<<"Danh Ba sau khi nhap: \n";
 	LietkeDB();
-	char tenx[30];
-	cout<<"Nhap ten can xoa: "<<endl;
-	cin>>tenx;
-	XoaContact();
+	cout<<"Danh ba sau khi xoa contact x: "<<endl;
+	XoaContact("Thanh Thanh");
+	LietkeDB();
 }
 void DocDBTuFile(){
-	db.clear();
+	db.clear();									// bo di tat ca cac phan tu cua vector
 	FILE *f;
-	f = fopen(FileName, "rb");
+	f = fopen("input.dat", "rb");
 	if(f != NULL){
 		while(!feof(f)){
 			Contact c;
@@ -59,7 +56,7 @@ void DocDBTuFile(){
 void GhiDBVaoFile(){
 	int size = db.size();
 	FILE *f;
-	f = fopen(FileName, "wb");
+	f = fopen("input.dat", "wb");
 	Contact c;
 	for(int i = 0; i < size; i++){
 		c = db[i];
@@ -71,35 +68,30 @@ void ThemMoi(Contact c){
 	db.push_back(c);
 	GhiDBVaoFile();	
 }
-void XuatDB(Contact c){
-	cout<<c.ten;
-	cout<<c.sdt;
-	cout<<c.email;
-	cout<<c.diachi;
-}
 void LietkeDB(){
-	int size = db.size();
-	for(int i = 0; i < size; i++)
-		XuatDB(db[i]);
+	for(int i = 0; i < db.size(); i++){
+		cout<<"Ten: "<<db[i].ten<<endl;
+		cout<<"So dien thoai: "<<db[i].sdt<<endl;
+		cout<<"Email: "<<db[i].email<<endl;
+		cout<<"Dia chi: "<<db[i].diachi<<endl;
+		cout<<"Gioi tinh la: "<<db[i].gioitinh<<endl;
+	}
 }
-void XoaContact(Contact c){
-//tim contact m co sdt trong danh ba
-//xoa m
-//ghi danh ba vao file
-	int size = db.size();
-	char m[30];
-	for(int i = 0; i < size; i++){
-		c = db[i];
-		if(m == c.ten){
-			delete c.ten;
+void XoaContact(char m[]){
+	for(int i = 0; i < db.size(); i++){
+		if(strcmp(db[i].ten, m) == 0)
+			db.erase(db.begin()+i);
+	}
+}
+void TimKiem(char tten[], char tsdt[]){
+	for(int i = 0; i < db.size(); i++){
+		if(strcmp(db[i].ten, tten) == 0 || strcmp(db[i].sdt, tsdt) == 0){
+			cout<<"Ten: "<<db[i].ten<<endl;
+			cout<<"So dien thoai: "<<db[i].sdt<<endl;
+			cout<<"Email: "<<db[i].email<<endl;
+			cout<<"Dia chi: "<<db[i].diachi<<endl;
 		}
-		else
-			cout<<"not found"<<endl;
-	GhiDBVaoFile();
+	}
 }
-}
-//void CapNhat(Contact c){
-//tim contact m co sdt c.sdt
-//cap nhat c vao m
-//ghi danh ba vao file}
+
 
